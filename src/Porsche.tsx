@@ -1,10 +1,21 @@
 import React, { useMemo } from "react";
 import { applyProps } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
+import { GLTF } from "three-stdlib";
+import { Instance } from "@react-three/fiber/dist/declarations/src/core/renderer";
 import model from "./models/911-transformed.glb?url";
 
-export function Porsche(props) {
-  const { scene, nodes, materials } = useGLTF(model);
+type GLTFResult = GLTF & {
+  nodes: {
+    [key: string]: THREE.Mesh;
+  };
+  materials: {
+    [key: string]: Instance;
+  };
+};
+
+export function Porsche(props: JSX.IntrinsicElements["mesh"]) {
+  const { scene, nodes, materials } = useGLTF(model) as GLTFResult;
   useMemo(() => {
     Object.values(nodes).forEach(
       (node) => node.isMesh && (node.receiveShadow = node.castShadow = true)
@@ -32,5 +43,5 @@ export function Porsche(props) {
       envMapIntensity: 2,
     });
   }, [nodes, materials]);
-  return <primitive object={scene} {...props} />;
+  return <primitive {...props} object={scene} />;
 }

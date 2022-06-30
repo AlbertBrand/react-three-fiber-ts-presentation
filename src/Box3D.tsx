@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
+import { Mesh } from "three";
 
-export function Box3D(props) {
+export function Box3D(props: JSX.IntrinsicElements["mesh"]) {
   // This reference gives us direct access to the THREE.Mesh object
-  const ref = useRef();
+  const ref = useRef<Mesh>(null!);
   // Hold state for hovered and clicked events
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
