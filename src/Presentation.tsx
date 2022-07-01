@@ -9,6 +9,9 @@ import {
   Image,
   CodePane,
   Notes,
+  Appear,
+  SlideLayout,
+  Box,
 } from "spectacle";
 import xebiaLogoImg from "./img/XebiaLogo.png";
 import threejsStructureImg from "./img/threejs-structure.svg";
@@ -59,11 +62,27 @@ export const Presentation = () => (
       </FlexBox>
     </Slide>
     <Slide>
+      <Heading>What does react-three-fiber do?</Heading>
+      <Appear>
+        <Text>From the site:</Text>
+        <Text fontStyle="italic">
+          Build your [three.js] scene declaratively with re-usable,
+          self-contained components that react to state, are readily interactive
+          and can tap into React's ecosystem.
+        </Text>
+      </Appear>
+      <Appear>
+        <Text fontWeight="bold">
+          A React component layer on top of all Three.js APIs
+        </Text>
+      </Appear>
+    </Slide>
+    <Slide>
       <Heading>Simple example</Heading>
       <SimpleScene />
     </Slide>
     <Slide>
-      <CodePane language="jsx" highlightRanges={[6, 7, 8, 9, 10]}>
+      <CodePane language="tsx" highlightRanges={[6, 7, 8, 9, 10]}>
         {SimpleSceneCode}
       </CodePane>
     </Slide>
@@ -73,6 +92,41 @@ export const Presentation = () => (
         highlightRanges={[5, 6, [7, 8], 9, 11, 12, 13, [14, 18], 20, 21]}
       >
         {Box3DCode}
+      </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>r3f performance</Heading>
+      <Text>❌ Valid, but suboptimal:</Text>
+      <CodePane language="tsx">
+        {`
+<mesh
+  visible
+  position={new Vector3(1, 2, 3)}
+  rotation={new Euler(Math.PI / 2, 0, 0)}
+  geometry={new SphereGeometry(1, 16, 16)}
+  material={new MeshBasicMaterial({ 
+    color: new Color('hotpink'), 
+    transparent: true 
+  })}
+/>`}
+      </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>r3f performance</Heading>
+      <Text>✅ Define properties declaratively:</Text>
+      <CodePane language="tsx">
+        {`
+<mesh 
+  visible 
+  position={[1, 2, 3]} 
+  rotation={[Math.PI / 2, 0, 0]}
+>
+  <sphereGeometry args={[1, 16, 16]} />
+  <meshStandardMaterial 
+    color="hotpink" 
+    transparent 
+  />
+</mesh>`}
       </CodePane>
     </Slide>
     <Slide>
@@ -113,6 +167,50 @@ export const Presentation = () => (
       >
         {OceanCode}
       </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>Benefits of TypeScript</Heading>
+      <FlexBox flexDirection="row" alignItems="start" flex={1}>
+        <Box width="100%">
+          {
+            <>
+              <Text fontWeight="bold">Pros:</Text>
+              <UnorderedList>
+                <Appear>
+                  <ListItem>Helpful in navigating API surface</ListItem>
+                </Appear>
+                <Appear>
+                  <ListItem>Refactoring benefits</ListItem>
+                </Appear>
+                <Appear>
+                  <ListItem>Most types are correct</ListItem>
+                </Appear>
+              </UnorderedList>
+            </>
+          }
+        </Box>
+        <Box width="100%">
+          {
+            <>
+              <Text fontWeight="bold">Cons:</Text>
+              <UnorderedList>
+                <Appear>
+                  <ListItem>
+                    Some hairy edge cases (add stuff to JSX.IntrinsicElements
+                    etc)
+                  </ListItem>
+                </Appear>
+                <Appear>
+                  <ListItem>Not all types are complete</ListItem>
+                </Appear>
+                <Appear>
+                  <ListItem>Adds another layer of complexity</ListItem>
+                </Appear>
+              </UnorderedList>
+            </>
+          }
+        </Box>
+      </FlexBox>
     </Slide>
     <Slide>
       <Image src={whatImg} />
