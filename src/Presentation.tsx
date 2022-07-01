@@ -10,7 +10,9 @@ import {
   CodePane,
   Notes,
 } from "spectacle";
-import xebiaLogo from "./img/XebiaLogo.png";
+import xebiaLogoImg from "./img/XebiaLogo.png";
+import threejsStructureImg from "./img/threejs-structure.svg";
+import whatImg from "./img/what.jpeg";
 
 import SimpleSceneCode from "./scenes/SimpleScene?raw";
 import Box3DCode from "./scenes/components/Box3D?raw";
@@ -25,11 +27,19 @@ import { ModelScene } from "./scenes/ModelScene";
 import { PhysicsScene } from "./scenes/PhysicsScene";
 import { OceanScene } from "./scenes/OceanScene";
 
+const ContactMe = () => (
+  <UnorderedList>
+    <ListItem>Twitter: @al_bert_brand</ListItem>
+    <ListItem>LinkedIn: albertbrand</ListItem>
+    <ListItem>GitHub: AlbertBrand</ListItem>
+  </UnorderedList>
+);
+
 export const Presentation = () => (
   <Deck theme={theme} template={template}>
     <Slide>
       <FlexBox height="100%" flexDirection="column">
-        <Image src={xebiaLogo} width="50%" />
+        <Image src={xebiaLogoImg} width="50%" />
         <Heading>
           <i>Amazing 3D with Three.js, React and TypeScript</i>
         </Heading>
@@ -40,11 +50,13 @@ export const Presentation = () => (
     <Slide>
       <Heading>Who am I?</Heading>
       <Text>Albert Brand</Text>
-      <UnorderedList>
-        <ListItem>Twitter: @al_bert_brand</ListItem>
-        <ListItem>LinkedIn: albertbrand</ListItem>
-        <ListItem>GitHub: albertbrand</ListItem>
-      </UnorderedList>
+      <ContactMe />
+    </Slide>
+    <Slide>
+      <FlexBox alignItems="center">
+        <Heading>Three.js concepts</Heading>
+        <Image src={threejsStructureImg} width="70%" />
+      </FlexBox>
     </Slide>
     <Slide>
       <Heading>Simple example</Heading>
@@ -101,6 +113,22 @@ export const Presentation = () => (
       >
         {OceanCode}
       </CodePane>
+    </Slide>
+    <Slide>
+      <Image src={whatImg} />
+      <Notes>
+        This presentation is built with React, react-three-fiber and TypeScript!
+      </Notes>
+    </Slide>
+    <Slide>
+      <Heading>Thank you!</Heading>
+      <Text>
+        <a href="https://github.com/AlbertBrand/react-three-fiber-ts-presentation">
+          https://github.com/AlbertBrand/react-three-fiber-ts-presentation
+        </a>
+      </Text>
+      <Text>Albert Brand</Text>
+      <ContactMe />
     </Slide>
   </Deck>
 );
