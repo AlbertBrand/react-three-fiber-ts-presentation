@@ -1,4 +1,3 @@
-import React from "react";
 import { FlexBox, FullScreen, Progress, Box } from "spectacle";
 
 export const template = () => (

@@ -3,21 +3,18 @@ import { useFrame } from "@react-three/fiber";
 import { Mesh } from "three";
 
 export function Box3D(props: JSX.IntrinsicElements["mesh"]) {
-  // This reference gives us direct access to the THREE.Mesh object
   const ref = useRef<Mesh>(null!);
-  // Hold state for hovered and clicked events
   const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
-  // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame(() => (ref.current.rotation.x += 0.01));
-  // Return the view, these are regular Threejs elements expressed in JSX
+  const [rotation, rotate] = useState(0);
+  useFrame(() => (ref.current.rotation.x += rotation));
   return (
     <mesh
       {...props}
       ref={ref}
-      scale={clicked ? 1.5 : 1}
-      onClick={() => click(!clicked)}
-      onPointerOver={() => hover(true)}
+      onPointerOver={() => {
+        hover(true);
+        rotate(0.01);
+      }}
       onPointerOut={() => hover(false)}
     >
       <boxGeometry args={[1, 1, 1]} />
