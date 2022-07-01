@@ -41,7 +41,7 @@ export const Presentation = () => (
       <FlexBox height="100%" flexDirection="column">
         <Image src={xebiaLogoImg} width="50%" />
         <Heading>
-          <i>Amazing 3D with Three.js, React and TypeScript</i>
+          <i>Amazing 3D with React, Three.js and TypeScript</i>
         </Heading>
         <Heading fontSize="h2">Albert Brand</Heading>
       </FlexBox>
