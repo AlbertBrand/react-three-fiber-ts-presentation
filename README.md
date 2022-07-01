@@ -9,6 +9,7 @@ The presentation is built with:
 - [react-three-fiber](https://github.com/pmndrs/react-three-fiber)
 - [drei](https://github.com/pmndrs/drei)
 - [use-cannon](https://github.com/pmndrs/use-cannon)
+- [react-postprocessing](https://github.com/pmndrs/react-postprocessing)
 
 ## Start
 

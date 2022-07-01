@@ -22,6 +22,7 @@ import Box3DCode from "./scenes/components/Box3D?raw";
 import PorscheCode from "./scenes/components/Porsche?raw";
 import PhysicsSceneCode from "./scenes/PhysicsScene?raw";
 import OceanCode from "./scenes/components/Ocean?raw";
+import TorusSceneCode from "./scenes/TorusScene?raw";
 
 import { template } from "./template";
 import { theme } from "./theme";
@@ -29,6 +30,7 @@ import { SimpleScene } from "./scenes/SimpleScene";
 import { ModelScene } from "./scenes/ModelScene";
 import { PhysicsScene } from "./scenes/PhysicsScene";
 import { OceanScene } from "./scenes/OceanScene";
+import { TorusScene } from "./scenes/TorusScene";
 
 const ContactMe = () => (
   <UnorderedList>
@@ -148,7 +150,7 @@ export const Presentation = () => (
       </CodePane>
     </Slide>
     <Slide>
-      <Heading>Shaders</Heading>
+      <Heading>Texture Shaders</Heading>
       <OceanScene />
     </Slide>
     <Slide>
@@ -166,6 +168,15 @@ export const Presentation = () => (
         ]}
       >
         {OceanCode}
+      </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>Postprocessing Shaders</Heading>
+      <TorusScene />
+    </Slide>
+    <Slide>
+      <CodePane language="tsx" highlightRanges={[9, 10, [11, 12]]}>
+        {TorusSceneCode}
       </CodePane>
     </Slide>
     <Slide>
