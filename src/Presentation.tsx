@@ -247,12 +247,18 @@ export const Presentation = () => (
     </Slide>
     <Slide>
       <Heading>Thank you!</Heading>
-      <Text>
-        <a href="https://github.com/AlbertBrand/react-three-fiber-ts-presentation">
-          https://github.com/AlbertBrand/react-three-fiber-ts-presentation
-        </a>
-      </Text>
-      <Text>Albert Brand</Text>
+      <UnorderedList>
+        <ListItem>
+          <a href="https://github.com/AlbertBrand/react-three-fiber-ts-presentation">
+            https://github.com/AlbertBrand/react-three-fiber-ts-presentation
+          </a>
+        </ListItem>
+        <ListItem>
+          <a href="https://react-three-fiber-ts-presentation.vercel.app">
+            https://react-three-fiber-ts-presentation.vercel.app
+          </a>
+        </ListItem>
+      </UnorderedList>
       <ContactMe />
     </Slide>
   </Deck>
