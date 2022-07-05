@@ -7,11 +7,11 @@ export function BoxGrid(props: JSX.IntrinsicElements["mesh"] & { delay: number }
   const toPosition = [...props.position as number[]]
   toPosition[1] += 3;
   const animProps = useSpring({
-    reset: true,
-    reverse: flip,
     from: { rotation: [0, 0, rotateZ], position: props.position },
     to: { rotation: [0, Math.PI * Math.random(), rotateZ], position: toPosition },
     delay: props.delay,
+    reset: true,
+    reverse: flip,
     config: {
       ...config.gentle, mass: 2
     },

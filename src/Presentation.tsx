@@ -22,6 +22,7 @@ import PorscheCode from "./scenes/components/Porsche?raw";
 import PhysicsSceneCode from "./scenes/PhysicsScene?raw";
 import OceanCode from "./scenes/components/Ocean?raw";
 import TorusSceneCode from "./scenes/TorusScene?raw";
+import BoxGridCode from "./scenes/components/BoxGrid?raw";
 
 import { template } from "./template";
 import { theme } from "./theme";
@@ -183,6 +184,15 @@ export const Presentation = () => (
     <Slide>
       <CodePane language="tsx" highlightRanges={[9, 10, [11, 12]]}>
         {TorusSceneCode}
+      </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>Animation</Heading>
+      <IntroScene />
+    </Slide>
+    <Slide>
+      <CodePane language="tsx" highlightRanges={[[9, 19], [21, 22]]}>
+        {BoxGridCode}
       </CodePane>
     </Slide>
     <Slide>
