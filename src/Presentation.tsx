@@ -31,6 +31,7 @@ import { PhysicsScene } from "./scenes/PhysicsScene";
 import { OceanScene } from "./scenes/OceanScene";
 import { TorusScene } from "./scenes/TorusScene";
 import { ObjectScene } from "./scenes/ObjectScene";
+import { IntroScene } from "./scenes/IntroScene";
 
 const ContactMe = () => (
   <UnorderedList>
@@ -43,7 +44,8 @@ const ContactMe = () => (
 export const Presentation = () => (
   <Deck theme={theme} template={template}>
     <Slide>
-      <FlexBox height="100%" flexDirection="column">
+      <IntroScene />
+      <FlexBox position="absolute" height="100%" flexDirection="column">
         <Image src={xebiaLogoImg} width="50%" />
         <Heading>
           <i>Amazing 3D with React, Three.js and TypeScript</i>

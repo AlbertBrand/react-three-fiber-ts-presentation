@@ -10,6 +10,7 @@ The presentation is built with:
 - [drei](https://github.com/pmndrs/drei)
 - [use-cannon](https://github.com/pmndrs/use-cannon)
 - [react-postprocessing](https://github.com/pmndrs/react-postprocessing)
+- [react-spring](https://github.com/pmndrs/react-spring)
 
 ## Start
 
