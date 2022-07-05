@@ -10,7 +10,6 @@ import {
   CodePane,
   Notes,
   Appear,
-  SlideLayout,
   Box,
 } from "spectacle";
 import xebiaLogoImg from "./img/XebiaLogo.png";
@@ -31,6 +30,7 @@ import { ModelScene } from "./scenes/ModelScene";
 import { PhysicsScene } from "./scenes/PhysicsScene";
 import { OceanScene } from "./scenes/OceanScene";
 import { TorusScene } from "./scenes/TorusScene";
+import { ObjectScene } from "./scenes/ObjectScene";
 
 const ContactMe = () => (
   <UnorderedList>
@@ -130,6 +130,10 @@ export const Presentation = () => (
   />
 </mesh>`}
       </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>Comes with many geometries</Heading>
+      <ObjectScene />
     </Slide>
     <Slide>
       <Heading>Using models</Heading>
