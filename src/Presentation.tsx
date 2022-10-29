@@ -16,13 +16,14 @@ import xebiaLogoImg from "./img/XebiaLogo.png";
 import threejsStructureImg from "./img/threejs-structure.svg";
 import whatImg from "./img/what.jpeg";
 
-import SimpleSceneCode from "./scenes/SimpleScene?raw";
-import Box3DCode from "./scenes/components/Box3D?raw";
-import PorscheCode from "./scenes/components/Porsche?raw";
-import PhysicsSceneCode from "./scenes/PhysicsScene?raw";
-import OceanCode from "./scenes/components/Ocean?raw";
-import TorusSceneCode from "./scenes/TorusScene?raw";
-import BoxGridCode from "./scenes/components/BoxGrid?raw";
+import ThreeJsSceneCode from "!!raw-loader!./scenes/ThreeJsScene";
+import SimpleSceneCode from "!!raw-loader!./scenes/SimpleScene";
+import Box3DCode from "!!raw-loader!./scenes/components/Box3D";
+import PorscheCode from "!!raw-loader!./scenes/components/Porsche";
+import PhysicsSceneCode from "!!raw-loader!./scenes/PhysicsScene";
+import OceanCode from "!!raw-loader!./scenes/components/Ocean";
+import TorusSceneCode from "!!raw-loader!./scenes/TorusScene";
+import BoxGridCode from "!!raw-loader!./scenes/components/BoxGrid";
 
 import { template } from "./template";
 import { theme } from "./theme";
@@ -48,10 +49,10 @@ export const Presentation = () => (
       <IntroScene />
       <FlexBox position="absolute" height="100%" flexDirection="column">
         <Image src={xebiaLogoImg} width="50%" />
-        <Heading>
+        <Heading color="primary">
           <i>Amazing 3D with React, Three.js and TypeScript</i>
         </Heading>
-        <Heading fontSize="h2">Albert Brand</Heading>
+        <Heading fontSize="h3">Albert Brand</Heading>
       </FlexBox>
       <Notes>Notes.</Notes>
     </Slide>
@@ -65,6 +66,105 @@ export const Presentation = () => (
         <Heading>Three.js concepts</Heading>
         <Image src={threejsStructureImg} width="70%" />
       </FlexBox>
+    </Slide>
+    <Slide>
+      <Heading>Scene, Camera, Renderer</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>
+            <b>Scene</b>: Root container for objects
+          </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>
+            <b>Camera</b>: A 'viewpoint' to render a scene from
+          </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>
+            <b>Renderer</b>: Renders a scene from a camera viewpoint as an image
+            in the browser
+          </ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+      <Heading>Object3D, Mesh</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>
+            <b>Object3D</b>: Container object for meshes
+          </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>
+            <b>Mesh</b>: A combination of:
+            <Appear>
+              <ListItem>a geometry</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>a material</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                transformation params (position, orientation, scale)
+              </ListItem>
+            </Appear>
+          </ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+      <Heading>Geometry, Material</Heading>
+      <UnorderedList>
+        <Appear>
+          <ListItem>
+            <b>Geometry</b>: The shape of the object
+          </ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>
+            <b>Material</b>: How to draw the object:
+            <Appear>
+              <ListItem>color</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>texture</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>reflection</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>... and many others</ListItem>
+            </Appear>
+          </ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+      <Heading>Light</Heading>
+      <Text>A source of light for a scene</Text>
+      <UnorderedList>
+        <Appear>
+          <ListItem>ambient</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>point</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>directional</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>spot</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>... and many others</ListItem>
+        </Appear>
+      </UnorderedList>
+    </Slide>
+    <Slide>
+      <Heading>Typed three.js without React</Heading>
+      <CodePane language="ts">{ThreeJsSceneCode}</CodePane>
     </Slide>
     <Slide>
       <Heading>What does react-three-fiber do?</Heading>
@@ -97,41 +197,6 @@ export const Presentation = () => (
         highlightRanges={[5, 6, [7, 8], 9, 11, 12, 13, [14, 18], 20, 21]}
       >
         {Box3DCode}
-      </CodePane>
-    </Slide>
-    <Slide>
-      <Heading>r3f performance</Heading>
-      <Text>❌ Valid, but suboptimal:</Text>
-      <CodePane language="tsx">
-        {`
-<mesh
-  visible
-  position={new Vector3(1, 2, 3)}
-  rotation={new Euler(Math.PI / 2, 0, 0)}
-  geometry={new SphereGeometry(1, 16, 16)}
-  material={new MeshBasicMaterial({ 
-    color: new Color('hotpink'), 
-    transparent: true 
-  })}
-/>`}
-      </CodePane>
-    </Slide>
-    <Slide>
-      <Heading>r3f performance</Heading>
-      <Text>✅ Define properties declaratively:</Text>
-      <CodePane language="tsx">
-        {`
-<mesh 
-  visible 
-  position={[1, 2, 3]} 
-  rotation={[Math.PI / 2, 0, 0]}
->
-  <sphereGeometry args={[1, 16, 16]} />
-  <meshStandardMaterial 
-    color="hotpink" 
-    transparent 
-  />
-</mesh>`}
       </CodePane>
     </Slide>
     <Slide>
@@ -191,8 +256,49 @@ export const Presentation = () => (
       <IntroScene />
     </Slide>
     <Slide>
-      <CodePane language="tsx" highlightRanges={[[9, 19], [21, 22]]}>
+      <CodePane
+        language="tsx"
+        highlightRanges={[
+          [9, 19],
+          [21, 22],
+        ]}
+      >
         {BoxGridCode}
+      </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>r3f performance</Heading>
+      <Text>❌ Valid, but suboptimal:</Text>
+      <CodePane language="tsx">
+        {`
+<mesh
+  visible
+  position={new Vector3(1, 2, 3)}
+  rotation={new Euler(Math.PI / 2, 0, 0)}
+  geometry={new SphereGeometry(1, 16, 16)}
+  material={new MeshBasicMaterial({ 
+    color: new Color('hotpink'), 
+    transparent: true 
+  })}
+/>`}
+      </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>r3f performance</Heading>
+      <Text>✅ Define properties declaratively:</Text>
+      <CodePane language="tsx">
+        {`
+<mesh 
+  visible 
+  position={[1, 2, 3]} 
+  rotation={[Math.PI / 2, 0, 0]}
+>
+  <sphereGeometry args={[1, 16, 16]} />
+  <meshStandardMaterial 
+    color="hotpink" 
+    transparent 
+  />
+</mesh>`}
       </CodePane>
     </Slide>
     <Slide>
@@ -241,9 +347,20 @@ export const Presentation = () => (
     </Slide>
     <Slide>
       <Image src={whatImg} />
-      <Notes>
-        This presentation is built with React, react-three-fiber and TypeScript!
-      </Notes>
+    </Slide>
+    <Slide>
+      <Text>This presentation was built with:</Text>
+      <UnorderedList>
+        <Appear>
+          <ListItem>React (Spectacle.js)</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>react-three-fiber</ListItem>
+        </Appear>
+        <Appear>
+          <ListItem>TypeScript</ListItem>
+        </Appear>
+      </UnorderedList>
     </Slide>
     <Slide>
       <Heading>Thank you!</Heading>

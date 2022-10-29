@@ -3,7 +3,7 @@ import { applyProps } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import { Instance } from "@react-three/fiber/dist/declarations/src/core/renderer";
-import model from "../models/911-transformed.glb?url";
+import model from "../models/911-transformed.glb";
 
 type GLTFResult = GLTF & {
   materials: {

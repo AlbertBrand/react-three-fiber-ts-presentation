@@ -4,7 +4,7 @@ This repo is a small presentation on using Three.js with React (using react-thre
 
 The presentation is built with:
 - [Spectacle](https://formidable.com/open-source/spectacle/)
-- [Vite](https://vitejs.dev/)
+- [Webpack](https://webpack.js.org/)
 - [React](https://reactjs.org/)
 - [react-three-fiber](https://github.com/pmndrs/react-three-fiber)
 - [drei](https://github.com/pmndrs/drei)
@@ -14,26 +14,7 @@ The presentation is built with:
 
 ## Start
 
-Setup:
-
-```
-npm install
-```
-
-Run:
-
-```
-npm run dev
-```
-
-Build:
-
-```
-npm run build
-```
-
-Preview built version:
-
-```
-npm run preview
-```
+- Run `npm install` to install dependencies.
+- Run `npm start` to start the presentation.
+- Run `npm build` to build a static version
+- Run `npm clean` to clean the dist folder
