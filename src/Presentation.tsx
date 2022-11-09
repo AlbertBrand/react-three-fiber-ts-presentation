@@ -11,10 +11,13 @@ import {
   Notes,
   Appear,
   Box,
+  SlideLayout,
 } from "spectacle";
 import xebiaLogoImg from "./img/XebiaLogo.png";
 import threejsStructureImg from "./img/threejs-structure.svg";
 import whatImg from "./img/what.jpeg";
+import frustumImg from "./img/frustum.svg";
+import lightsImg from "./img/lights.jpeg";
 
 import ThreeJsSceneCode from "!!raw-loader!./scenes/ThreeJsScene";
 import SimpleSceneCode from "!!raw-loader!./scenes/SimpleScene";
@@ -34,6 +37,8 @@ import { OceanScene } from "./scenes/OceanScene";
 import { TorusScene } from "./scenes/TorusScene";
 import { ObjectScene } from "./scenes/ObjectScene";
 import { IntroScene } from "./scenes/IntroScene";
+import { Knot } from "./scenes/components/Knot";
+import { Canvas } from "@react-three/fiber";
 
 const ContactMe = () => (
   <UnorderedList>
@@ -67,101 +72,137 @@ export const Presentation = () => (
         <Image src={threejsStructureImg} width="70%" />
       </FlexBox>
     </Slide>
-    <Slide>
-      <Heading>Scene, Camera, Renderer</Heading>
-      <UnorderedList>
-        <Appear>
-          <ListItem>
-            <b>Scene</b>: Root container for objects
-          </ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>
-            <b>Camera</b>: A 'viewpoint' to render a scene from
-          </ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>
-            <b>Renderer</b>: Renders a scene from a camera viewpoint as an image
-            in the browser
-          </ListItem>
-        </Appear>
-      </UnorderedList>
-    </Slide>
-    <Slide>
-      <Heading>Object3D, Mesh</Heading>
-      <UnorderedList>
-        <Appear>
-          <ListItem>
-            <b>Object3D</b>: Container object for meshes
-          </ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>
-            <b>Mesh</b>: A combination of:
+    <SlideLayout.TwoColumn
+      left={
+        <>
+          <Heading>Scene, Camera, Renderer</Heading>
+          <UnorderedList>
             <Appear>
-              <ListItem>a geometry</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>a material</ListItem>
+              <ListItem>
+                <b>Scene</b>: Root container for objects
+              </ListItem>
             </Appear>
             <Appear>
               <ListItem>
-                transformation params (position, orientation, scale)
+                <b>Camera</b>: A 'viewpoint' to render a scene from
               </ListItem>
             </Appear>
-          </ListItem>
-        </Appear>
-      </UnorderedList>
-    </Slide>
-    <Slide>
-      <Heading>Geometry, Material</Heading>
-      <UnorderedList>
-        <Appear>
-          <ListItem>
-            <b>Geometry</b>: The shape of the object
-          </ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>
-            <b>Material</b>: How to draw the object:
             <Appear>
-              <ListItem>color</ListItem>
+              <ListItem>
+                <b>Renderer</b>: Renders a scene from a camera viewpoint as an
+                image in the browser
+              </ListItem>
+            </Appear>
+          </UnorderedList>
+        </>
+      }
+      right={<Image src={frustumImg} width="80%" />}
+    />
+
+    <SlideLayout.TwoColumn
+      left={
+        <>
+          <Heading>Object3D, Mesh</Heading>
+          <UnorderedList>
+            <Appear>
+              <ListItem>
+                <b>Object3D</b>: Container object for meshes
+              </ListItem>
             </Appear>
             <Appear>
-              <ListItem>texture</ListItem>
+              <ListItem>
+                <b>Mesh</b>: A combination of:
+                <Appear>
+                  <ListItem>a geometry</ListItem>
+                </Appear>
+                <Appear>
+                  <ListItem>a material</ListItem>
+                </Appear>
+                <Appear>
+                  <ListItem>
+                    transformation params (position, orientation, scale)
+                  </ListItem>
+                </Appear>
+              </ListItem>
+            </Appear>
+          </UnorderedList>
+        </>
+      }
+      right={
+        <Canvas
+          resize={{ offsetSize: true }}
+          camera={{ position: [0, 0, 10] }}
+          style={{ height: "50vh" }}
+        >
+          <pointLight position={[15, 15, 15]} intensity={1} />
+          <Knot />
+        </Canvas>
+      }
+    />
+
+    <SlideLayout.TwoColumn
+      left={
+        <>
+          <Heading>Geometry, Material</Heading>
+          <UnorderedList>
+            <Appear>
+              <ListItem>
+                <b>Geometry</b>: The shape of the object
+              </ListItem>
             </Appear>
             <Appear>
-              <ListItem>reflection</ListItem>
+              <ListItem>
+                <b>Material</b>: How to draw the object:
+                <Appear>
+                  <ListItem>color</ListItem>
+                </Appear>
+                <Appear>
+                  <ListItem>texture</ListItem>
+                </Appear>
+                <Appear>
+                  <ListItem>reflection</ListItem>
+                </Appear>
+              </ListItem>
+            </Appear>
+          </UnorderedList>
+        </>
+      }
+      right={
+        <Canvas
+          resize={{ offsetSize: true }}
+          camera={{ position: [0, 0, 10] }}
+          style={{ height: "50vh" }}
+        >
+          <pointLight position={[15, 15, 15]} intensity={1} />
+          <Knot />
+        </Canvas>
+      }
+    />
+
+    <SlideLayout.TwoColumn
+      left={
+        <>
+          <Heading>Light</Heading>
+          <Text>A source of light for a scene</Text>
+          <UnorderedList>
+            <Appear>
+              <ListItem>ambient</ListItem>
             </Appear>
             <Appear>
-              <ListItem>... and many others</ListItem>
+              <ListItem>directional</ListItem>
             </Appear>
-          </ListItem>
-        </Appear>
-      </UnorderedList>
-    </Slide>
-    <Slide>
-      <Heading>Light</Heading>
-      <Text>A source of light for a scene</Text>
-      <UnorderedList>
-        <Appear>
-          <ListItem>ambient</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>point</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>directional</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>spot</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>... and many others</ListItem>
-        </Appear>
-      </UnorderedList>
-    </Slide>
+            <Appear>
+              <ListItem>point</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>spot</ListItem>
+            </Appear>
+          </UnorderedList>
+        </>
+      }
+      right={<Image src={lightsImg} width="100%" />}
+    />
+
     <Slide>
       <Heading>Typed three.js without React</Heading>
       <CodePane language="ts">{ThreeJsSceneCode}</CodePane>
@@ -267,7 +308,28 @@ export const Presentation = () => (
       </CodePane>
     </Slide>
     <Slide>
-      <Heading>r3f performance</Heading>
+      <Heading>R3F+TS package list</Heading>
+      <CodePane language="tsx">
+        {`
+  "dependencies": {
+    "@react-spring/three": "^9.4.5",
+    "@react-three/cannon": "^6.3.0",
+    "@react-three/drei": "^9.14.3",
+    "@react-three/fiber": "^8.0.27",
+    "@react-three/postprocessing": "^2.4.2",
+    "three": "^0.141.0",
+    "three-stdlib": "^2.10.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.12",
+    "@types/three": "0.141.0",
+    "typescript": "^4.5.2"
+  }
+`}
+      </CodePane>
+    </Slide>
+    <Slide>
+      <Heading>R3F performance</Heading>
       <Text>❌ Valid, but suboptimal:</Text>
       <CodePane language="tsx">
         {`
@@ -284,7 +346,7 @@ export const Presentation = () => (
       </CodePane>
     </Slide>
     <Slide>
-      <Heading>r3f performance</Heading>
+      <Heading>R3F performance</Heading>
       <Text>✅ Define properties declaratively:</Text>
       <CodePane language="tsx">
         {`
@@ -349,18 +411,14 @@ export const Presentation = () => (
       <Image src={whatImg} />
     </Slide>
     <Slide>
-      <Text>This presentation was built with:</Text>
-      <UnorderedList>
-        <Appear>
-          <ListItem>React (Spectacle.js)</ListItem>
-        </Appear>
-        <Appear>
+      <Heading>This presentation is built with</Heading>
+      <Appear>
+        <UnorderedList>
+          <ListItem>React</ListItem>
           <ListItem>react-three-fiber</ListItem>
-        </Appear>
-        <Appear>
           <ListItem>TypeScript</ListItem>
-        </Appear>
-      </UnorderedList>
+        </UnorderedList>
+      </Appear>
     </Slide>
     <Slide>
       <Heading>Thank you!</Heading>

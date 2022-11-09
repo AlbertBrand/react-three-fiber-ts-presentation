@@ -21,7 +21,7 @@ export function BoxGrid(props: JSX.IntrinsicElements["mesh"] & { delay: number }
     // @ts-ignore 
     <a.mesh {...props} {...animProps}>
       <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#888" />
+      <meshStandardMaterial color="#6322B2" />
     </a.mesh>
   );
 }
